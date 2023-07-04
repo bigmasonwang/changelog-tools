@@ -1,5 +1,12 @@
+import ChangelogTesting from "./changelogTesting/ChangelogTesting";
+
 function App() {
-  return <h1>Changelog tools</h1>;
+  return (
+    <div className="container">
+      <h1>Changelog tools</h1>
+      <ChangelogTesting />
+    </div>
+  );
 }
 
 export default App;

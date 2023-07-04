@@ -1,0 +1,6 @@
+- [AB-110] Added new feature for dynamic data binding.
+- [AB-111] Fixed bug causing crashes in some Android devices.
+- [AB-112] Updated dependencies to latest versions.
+- [AB-107] Improved UI for better user experience.
+- [AB-108] Resolved security issue related to user authentication.
+- [AB-109] Patched memory leak causing sluggish response times.
