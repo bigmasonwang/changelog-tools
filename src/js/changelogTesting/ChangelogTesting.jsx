@@ -20,12 +20,10 @@ const ChangelogTesting = () => {
 
   const handleParseChangelog = () => {
     const changelogArray = parseChangelog(changelog);
-    console.log(changelog);
     const formattedChangelog = formatChangelog({
       changelogArray,
       projectManagerBaseUrl,
     });
-    console.log(formattedChangelog);
     setFormattedChangelog(formattedChangelog);
   };
 
