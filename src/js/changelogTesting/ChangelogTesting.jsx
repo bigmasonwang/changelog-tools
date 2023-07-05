@@ -27,11 +27,13 @@ const ChangelogTesting = () => {
     <div className="row">
       <div className="col-6">
         <FileUpload handleFileUpload={handleFileUpload} />
-        {changelog && (
-          <div className="card">
-            <pre>{changelog}</pre>
-          </div>
-        )}
+        Or paste your changelog here:
+        <textarea
+          className="form-control"
+          rows="10"
+          value={changelog}
+          onChange={(e) => setChangelog(e.target.value)}
+        />
       </div>
       <div className="col-6">
         <button className="btn btn-primary" onClick={handleParseChangelog}>
