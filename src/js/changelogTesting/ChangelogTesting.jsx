@@ -8,6 +8,7 @@ import rehypeRaw from "rehype-raw";
 const ChangelogTesting = () => {
   const [changelog, setChangelog] = useState(null);
   const [formattedChangelog, setFormattedChangelog] = useState(null);
+  const [projectManagerBaseUrl, setProjectManagerBaseUrl] = useState("");
 
   const handleFileUpload = (file) => {
     const reader = new FileReader();
@@ -19,7 +20,12 @@ const ChangelogTesting = () => {
 
   const handleParseChangelog = () => {
     const changelogArray = parseChangelog(changelog);
-    const formattedChangelog = formatChangelog(changelogArray);
+    console.log(changelog);
+    const formattedChangelog = formatChangelog({
+      changelogArray,
+      projectManagerBaseUrl,
+    });
+    console.log(formattedChangelog);
     setFormattedChangelog(formattedChangelog);
   };
 
@@ -31,11 +37,33 @@ const ChangelogTesting = () => {
         <textarea
           className="form-control"
           rows="10"
-          value={changelog}
+          value={changelog || ""}
           onChange={(e) => setChangelog(e.target.value)}
         />
       </div>
       <div className="col-6">
+        <div className="mb-3">
+          <label htmlFor="basic-url" className="form-label">
+            Your project manager base URL
+          </label>
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              id="basic-url"
+              aria-describedby="example-ticket-number"
+              value={projectManagerBaseUrl}
+              onChange={(e) => setProjectManagerBaseUrl(e.target.value)}
+              placeholder="https://project-manager.example.com/ticket/"
+            />
+            <span className="input-group-text" id="example-ticket-number">
+              AB-123
+            </span>
+          </div>
+          <div className="form-text" id="basic-addon4">
+            This is used to generate links to tickets in the changelog.
+          </div>
+        </div>
         <button className="btn btn-primary" onClick={handleParseChangelog}>
           Parse
         </button>

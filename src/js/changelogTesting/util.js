@@ -14,14 +14,20 @@ export const parseChangelog = (changelog) => {
   return parsed;
 };
 
-export const formatChangelog = (changelog) => {
-  if (!changelog) {
+export const formatChangelog = ({ changelogArray, projectManagerBaseUrl }) => {
+  if (!changelogArray) {
     return null;
   }
-  return changelog
+  const url = (projectManagerBaseUrl, ticketId) =>
+    projectManagerBaseUrl &&
+    `<a href="${projectManagerBaseUrl}/${ticketId}" target="_blank">${ticketId}</a>`;
+  return changelogArray
     .map(
       (item) =>
-        `<details><summary>${item.id} ${item.desc}</summary><p>comment</p></details>`
+        `<details><summary>${item.id} ${item.desc}</summary><div>${url(
+          projectManagerBaseUrl,
+          item.id
+        )} <p>comment</p></div></details>`
     )
     .join("\n");
 };
