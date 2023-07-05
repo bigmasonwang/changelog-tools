@@ -9,6 +9,7 @@ const ChangelogTesting = () => {
   const [changelog, setChangelog] = useState(null);
   const [formattedChangelog, setFormattedChangelog] = useState(null);
   const [projectManagerBaseUrl, setProjectManagerBaseUrl] = useState("");
+  const [showRaw, setShowRaw] = useState(false);
 
   const handleFileUpload = (file) => {
     const reader = new FileReader();
@@ -67,14 +68,26 @@ const ChangelogTesting = () => {
         </button>
         {formattedChangelog && (
           <div>
-            <div className="card">
-              <pre>{formattedChangelog}</pre>
-            </div>
-            <FileSave markdown={formattedChangelog} />
-            <div className="card">
-              <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                {formattedChangelog}
-              </ReactMarkdown>
+            {showRaw && (
+              <div className="card">
+                <pre>{formattedChangelog}</pre>
+              </div>
+            )}
+            {!showRaw && (
+              <div className="card">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                  {formattedChangelog}
+                </ReactMarkdown>
+              </div>
+            )}
+            <div className="d-flex">
+              <FileSave markdown={formattedChangelog} />
+              <button
+                className="btn btn-primary"
+                onClick={() => setShowRaw(!showRaw)}
+              >
+                {showRaw ? "Show preview" : "Show raw"}
+              </button>
             </div>
           </div>
         )}
