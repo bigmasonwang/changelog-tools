@@ -53,10 +53,10 @@ const ChangelogTesting = () => {
               aria-describedby="example-ticket-number"
               value={projectManagerBaseUrl}
               onChange={(e) => setProjectManagerBaseUrl(e.target.value)}
-              placeholder="https://project-manager.example.com/ticket/"
+              placeholder="https://project-manager.example.com/ticket"
             />
             <span className="input-group-text" id="example-ticket-number">
-              AB-123
+              /AB-123
             </span>
           </div>
           <div className="form-text" id="basic-addon4">
