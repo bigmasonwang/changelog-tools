@@ -29,6 +29,7 @@ export const formatChangelog = ({ changelogArray, projectManagerBaseUrl }) => {
           item.id
         )} <p>
         <b>Summary</b> - (Please give a brief summary with any relevant context around why this change has been submitted/what problems it is addressing)
+        <br/>
         <b>Test Instruction:</b>
         </p></div></details>`
     )
